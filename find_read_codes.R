@@ -76,7 +76,7 @@ find_temp_codes <- function(codes, file1='read2_lkp.csv', file2='read3_lkp.csv')
         read2$term_description[i] <- paste(read2$V3[i], read2$V4[i], sep=' -')
       }
     }
-    read2 <- read2[,c(1,4)] %>% rename(code = 'V1')
+    read2 <- read2[,c(1,ncol(read2))] %>% rename(code = 'V1')
     read2 <- read2[!(read2$term_description==''), ]
     
     #Some codes have multiple term descriptions. Combine these descriptions into
@@ -114,7 +114,7 @@ find_temp_codes <- function(codes, file1='read2_lkp.csv', file2='read3_lkp.csv')
         read3$term_description[i] <- paste(read3$V2[i], read3$V3[i], sep=' -')
       }
     }
-    read3 <- read3[,c(1,4)] %>% rename(code = 'V1')
+    read3 <- read3[,c(1,ncol(read2))] %>% rename(code = 'V1')
     read3 <- read3[!(read3$term_description==''), ]
     
     #Some codes have multiple term descriptions. Combine these descriptions into
