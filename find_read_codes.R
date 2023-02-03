@@ -1,4 +1,5 @@
-#uncomment and replace file/path to download read 2 and 3 lookup tables:
+#either add read2_lkp.csv and read3_lkp.csv to your working environment manually
+#or uncomment below lines and replace file/path to download to your environment:
 #system('dx download read2_lkp.csv') 
 #system('dx download read3_lkp.csv')
 
