@@ -18,8 +18,12 @@ find_temp_codes <- function(codes, file1='read2_lkp.csv', file2='read3_lkp.csv')
     return(read.table(text = "",col.names = codes_header))
   }
   
-  #If user input codes, use grep to look for codes in read2/3 lookup tables
-  #------------------------------------------------------------------------
+  #If user input codes, crop codes down to 5 figures each - the Biobank format
+  #---------------------------------------------------------------------------
+  for (i in 1:length(codes)) {codes[i] <- substr(codes[i], 1, 5)}
+
+  #Use grep to look for codes in read2/3 lookup tables
+  #----------------------------------------------------
   codesg=paste(codes,collapse='\\|^') #turn, e.g. 'code1, code2' into 'code1\\|^code2' for use in a grep
   
   grepcode2=paste('grep \'','^',codesg,'\' ', file1, '> read2.csv',sep='') #output = "grep '^B13\\|^B14' read2_lkp.csv> read2.csv"
