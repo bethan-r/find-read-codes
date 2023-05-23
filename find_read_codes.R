@@ -173,7 +173,8 @@ find_read_codes <- function(codes, file1 = 'read2_lkp.csv', file2 = 'read3_lkp.c
     see_codes <- unique(c(see_codes2, see_codes3))
     
     #If there are no descriptions which start with 'See':
-    if (is.na(see_codes[1]) == TRUE) {
+    see_codes <- see_codes[!is.na(see_codes)]
+    if (length(see_codes) == 0) {
       break #end the while loop
     }
     
