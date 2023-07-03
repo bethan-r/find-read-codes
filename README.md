@@ -21,12 +21,16 @@ Some of the entries in term_description include a comma, so have been inadvertan
 <b>code</b> - the read code</p>
 <b>term_description_r2</b> - description of the read code according to read version 2.</p>
 <b>term_description_r3</b> - description of the read code according to read version 3.</p>
-Note that some read codes have multiple descriptions - these are combined into the same field and separated with a semicolon. If the description for one code is 'See [different code]', then the referenced code and description will be added to the bottom of the dataframe.</p>
+Note that some read codes have multiple descriptions - these are combined into the same field and separated with a semicolon. If the description for one code is 'See [different code]', then the referenced code and its description will be added to the bottom of the dataframe.</p>
 
 <h2>Example use case:</h2>
-Researcher needs to extract UK Biobank GP records for any patients with colorectal cancer. A list of colorectal cancer codes is reported online: https://clinicalcodes.rss.mhs.man.ac.uk/medcodes/article/17/codelist/res17-colorectal-cancer/ </p>
+A researcher needs to extract UK Biobank GP records for any patients with colorectal cancer. A list of colorectal cancer codes is reported online: https://clinicalcodes.rss.mhs.man.ac.uk/medcodes/article/17/codelist/res17-colorectal-cancer/ </p>
 <b>1.</b> From a list such as the one above, determine which codes/starting sequences of codes to search for, e.g. B13, B14, B575, B1z, B803, B804, B902, BB5N</p>
 <b>2.</b> Make sure read2_lkp.csv and read3_lkp.csv are in the working environment</p>
-<b>3.</b> Run read_codes <- find_read_codes(c('B13','B14','B575','B1z','B803','B804','B902','BB5N'))</p>
-<b>4.</b> Output: a table of any read codes starting with the above plus their descriptions</p>
-<b>5.</b> Researcher can manually look through output table to determine which codes are relevant.</p>
+<b>3.</b> Run in R:</p>
+read_codes <- find_read_codes(c('B13','B14','B575','B1z','B803','B804','B902','BB5N'))</p>
+  Running the above code will use the default/invisible settings of:</p>
+  find_read_codes(c('B13','B14','B575','B1z','B803','B804','B902','BB5N'), file1 = 'read2_lkp.csv', file2 = 'read3_lkp.csv', loop_limit = 3)</p>
+  File names and loop_limit can be specified if necessary.</p>
+<b>4.</b> Output: a table of any read codes starting with the above listed codes, plus their descriptions.</p>
+<b>5.</b> The researcher can manually look through output table to determine which codes are relevant.</p>
